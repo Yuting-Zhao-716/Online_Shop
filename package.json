@@ -1,0 +1,29 @@
+{
+  "name": "speedfactorynz",
+  "version": "1.0.0",
+  "description": "This is created for SpeedfactoryNZ company and as my own practice project.",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Yuting-Zhao-716/Online_Shop.git"
+  },
+  "keywords": [
+    "online_shop"
+  ],
+  "author": "YutingZHAO",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Yuting-Zhao-716/Online_Shop/issues"
+  },
+  "homepage": "https://github.com/Yuting-Zhao-716/Online_Shop#readme",
+  "dependencies": {
+    "ejs": "^3.1.6",
+    "express": "^4.17.3"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}

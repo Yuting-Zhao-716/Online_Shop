@@ -7,6 +7,10 @@ const baseRoute = require('./routes/base.route.js');
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
+/* Setting up the public scripts and styles folder */
+app.use(express.static('public'));
+app.use(express.urlencoded({extended: false}))
+
 /* This is the routes part */
 app.use(baseRoute);
 

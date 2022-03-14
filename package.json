@@ -20,8 +20,10 @@
   },
   "homepage": "https://github.com/Yuting-Zhao-716/Online_Shop#readme",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "ejs": "^3.1.6",
-    "express": "^4.17.3"
+    "express": "^4.17.3",
+    "mongodb": "^4.4.1"
   },
   "devDependencies": {
     "nodemon": "^2.0.15"

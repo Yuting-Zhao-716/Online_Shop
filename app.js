@@ -5,6 +5,10 @@ const path = require('path');
 /* Importing Database */
 const db = require('./database/database');
 
+/* Importing Sessions */
+const session = require('express-session');
+const getSessionConfig = require('./config/session');
+
 /* Importing middlewares */
 const errorHandlingMiddleware = require('./middleware/errorHandling');
 
@@ -20,6 +24,10 @@ app.set('views', path.join(__dirname, 'views'));
 /* Setting up the public scripts and styles folder */
 app.use(express.static('public'));
 app.use(express.urlencoded({extended: false}))
+
+/* Using sessions on all incoming requests */
+const sessionConfig=getSessionConfig();
+app.use(session(sessionConfig));
 
 /* This is the routes part */
 app.use(baseRoute);

@@ -1,4 +1,5 @@
 const User = require('../models/user');
+const bcrypt = require('bcryptjs');
 
 function getSignupPage(req,res){
     res.render('./authViews/signup');
@@ -38,7 +39,49 @@ async function postSignupPage(req, res,next) {
 
     res.redirect('/');
 }
+
+function getLoginPage(req,res){
+    res.render('./authViews/login');
+}
+
+async function postLoginPage(req,res){
+    const input=req.body;
+    const email=input.email;
+    const password=input.password;
+
+    /* Check if the user has registered or not */
+    const result= await User.hasUserInDB(email);
+
+    /* User not existed */
+    if(!result){
+        return res.redirect('/login');
+    }
+
+    /* User does exist */
+    const isDetailTrue = await bcrypt.compare(password, result.password);
+
+    /* But user details are not correct */
+    if(!isDetailTrue){
+        return res.redirect('/login');
+    }
+
+    /* Details are correct */
+    req.session.uid=result._id.toString();
+    req.session.isAdmin=result.isAdmin;
+    req.session.save(function(){
+        res.redirect('/');
+    });
+}
+
+async function postLogout(req,res){
+    req.session.uid=null;
+    res.redirect('/login');
+}
+
 module.exports={
     getSignupPage:getSignupPage,
     postSignupPage:postSignupPage,
+    getLoginPage:getLoginPage,
+    postLoginPage:postLoginPage,
+    postLogout:postLogout
 }

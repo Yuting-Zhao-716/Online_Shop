@@ -24,7 +24,9 @@ class User {
             postal: this.postal,
             city: this.city
         })
-
+    }
+    static async hasUserInDB(emailInput){
+        return await db.getDb().collection('users').findOne({email: emailInput});
     }
 }
 

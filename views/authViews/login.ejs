@@ -1,0 +1,33 @@
+
+<%-include('../sharedViews/head',{pageTitle:'Login page'})%>
+<link href="./styles/form.css" rel="stylesheet">
+
+</head>
+<body>
+<%- include('../sharedViews/header')%>
+<main>
+    <section class="form">
+        <h1>Log in Now</h1>
+        <form action="/login" method="post">
+            <p>
+                <label>Email</label>
+                <input type="email" id="email" name="email" required>
+            </p>
+            <p>
+                <label>Password</label>
+                <input type="password" id="password" name="password" minlength="6" required>
+            </p>
+
+            <section class="buttons">
+                <div>
+                    <button type="reset">Reset</button>
+                    <button type="submit">Submit</button>
+                </div>
+                <a href="/login">Login instead</a>
+            </section>
+        </form>
+    </section>
+
+</main>
+
+<%- include('../sharedViews/footer')%>

@@ -68,6 +68,7 @@ main {
     display: none;
     flex-direction: column;
     align-items: center;
+    background-color: var(--color-orange-dark);
 }
 
 #mobile-menu nav{
@@ -76,9 +77,11 @@ main {
     margin: var(--space-4) auto;
 }
 
-#mobile-menu nav a {
+#mobile-menu nav a, #mobile-menu nav button {
     color: var(--color-blue-dark);
     font-size: 1.75rem;
+    border-radius: var(--border-radius-medium);
+    background-color: transparent;
 }
 
 
@@ -105,4 +108,12 @@ main {
         padding: var(--space-2) var(--space-4);
         border-radius: var(--border-radius-small);
     }
+    #main-header .nav-items button{
+        color: var(--color-blue-dark);
+        border-color: var(--color-blue-dark);
+        font:inherit;
+        border-radius: var(--border-radius-medium);
+        background-color: transparent;
+    }
+
 }

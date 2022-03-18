@@ -9,6 +9,7 @@
     <section class="form">
         <h1>Log in Now</h1>
         <form action="/login" method="post">
+            <input type="hidden" name="_csrf" value="<%=locals.csrfToken%>">
             <p>
                 <label>Email</label>
                 <input type="email" id="email" name="email" required>

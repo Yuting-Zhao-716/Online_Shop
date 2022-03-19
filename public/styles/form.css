@@ -1,8 +1,8 @@
 .form {
     width: 70%;
     margin: var(--space-4) auto;
-    border: 2px solid var(--color-blue-dark);
-    background-color: var(--color-orange-dark);
+    border: 2px solid var(--color-blueberry-primary);
+    background-color: var(--color-form);
     border-radius: var(--border-radius-large);
     display: flex;
     flex-direction: column;
@@ -12,6 +12,11 @@
 
 .form h1{
     text-align: center;
+}
+.form #errorMessage{
+    color: var(--color-errorMessage);
+    text-align: center;
+    font-size: large;
 }
 .form form{
     width: 80%;
@@ -23,6 +28,7 @@
     margin-bottom: var(--space-2);
 }
 .form form input{
+    background-color: var(--color-input);
     width: 100%;
     border-radius: var(--border-radius-medium);
     padding: var(--space-2);
@@ -39,15 +45,20 @@
     justify-content: space-around;
     align-items: center;
 }
-.form .buttons a{
+.form .buttons a {
     margin: var(--space-4) auto;
+    color: var(--color-paragraph) !important;
 }
 .form .buttons button, .form .buttons a {
-    color: var(--color-blue-dark);
+    color: var(--color-maintext);
     padding: var(--space-1) var(--space-2);
     font-size: x-large;
     border-radius: var(--border-radius-medium);
 }
 .form .buttons button:hover, .form .buttons a:hover {
     cursor: pointer;
+    background-color: var(--color-blueberry-primary);
+}
+.form .buttons a:hover {
+    color: var(--color-maintext) !important;
 }

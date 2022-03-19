@@ -1,8 +1,24 @@
 const User = require('../models/user');
 const bcrypt = require('bcryptjs');
+const dataFlushing = require('../utility/dataFlushing');
 
 function getSignupPage(req,res){
-    res.render('./authViews/signup');
+    let inputData=dataFlushing.dataRetrieving(req);
+    if(!inputData){
+        inputData={
+            errorMessage:'',
+            email:'',
+            confirmedEmail:'',
+            password:'',
+            confirmedPassword:'',
+            name:'',
+            phone:'',
+            address:'',
+            postal:'',
+            city:''
+        }
+    }
+    res.render('./authViews/signup', {data: inputData});
 }
 
 async function postSignupPage(req, res,next) {
@@ -16,16 +32,48 @@ async function postSignupPage(req, res,next) {
     const address=input.address;
     const postal=input.postal;
     const city=input.city;
+
+    /* Data for flushing */
+    const inputData={
+        email:email,
+        confirmedEmail:confirmedEmail,
+        password:password,
+        confirmedPassword:confirmedPassword,
+        name:name,
+        phone:phone,
+        address:address,
+        postal:postal,
+        city:city
+    }
+
     /* Input check */
     if(!email ||!confirmedEmail || !password || !confirmedPassword || !name || !phone || !address || !postal || !city
-        || email!==confirmedEmail || password!==confirmedPassword || !email.includes('@') || password.trim().length<6){
+        || email!==confirmedEmail || password!==confirmedPassword || !email.includes('@') || password.trim()<6){
         console.log('please enter correct input!');
-        res.redirect('/signup');
+        dataFlushing.dataFlushing(req,{
+            errorMessage:'Invalid input, please enter again.',
+            ...inputData
+        },function (){
+            res.redirect('/signup');
+        })
+        return;
+    }
+
+    /* Check if the User existed already or not */
+    try{
+        const userCheckResult= await User.hasUserInDB(email);
+        if(userCheckResult){
+        console.log('User already existed !');
+        dataFlushing.dataFlushing(req,{
+            errorMessage:'User registered already, please try another email or login instead.',
+            ...inputData
+        },function (){
+            res.redirect('/signup');
+        })
         return;
     }
 
     /* If error happens, the error middleware will handle it */
-    try{
         const newUser=new User(
             email,password,name,phone,
             address,postal,city
@@ -37,24 +85,42 @@ async function postSignupPage(req, res,next) {
         return;
     }
 
-    res.redirect('/');
+    res.redirect('/login');
 }
 
 function getLoginPage(req,res){
-    res.render('./authViews/login');
+    let inputData = dataFlushing.dataRetrieving(req);
+    if(!inputData){
+        inputData={
+            errorMessage:'',
+            email:'',
+            password:''
+        }
+    }
+    res.render('./authViews/login',{data:inputData});
 }
 
 async function postLoginPage(req,res){
     const input=req.body;
     const email=input.email;
     const password=input.password;
+    const inputData={
+        email:email,
+        password:password
+    }
 
     /* Check if the user has registered or not */
     const result= await User.hasUserInDB(email);
 
     /* User not existed */
     if(!result){
-        return res.redirect('/login');
+        dataFlushing.dataFlushing(req,{
+            errorMessage:'Wrong username or password, please try again.',
+            ...inputData
+        },function (){
+            res.redirect('/login');
+        })
+        return;
     }
 
     /* User does exist */
@@ -62,7 +128,13 @@ async function postLoginPage(req,res){
 
     /* But user details are not correct */
     if(!isDetailTrue){
-        return res.redirect('/login');
+        dataFlushing.dataFlushing(req,{
+            errorMessage:'Wrong username or password, please try again.',
+            ...inputData
+        },function (){
+            res.redirect('/login');
+        })
+        return;
     }
 
     /* Details are correct */

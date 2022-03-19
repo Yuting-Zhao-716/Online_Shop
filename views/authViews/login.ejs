@@ -10,13 +10,16 @@
         <h1>Log in Now</h1>
         <form action="/login" method="post">
             <input type="hidden" name="_csrf" value="<%=locals.csrfToken%>">
+            <% if(data.errorMessage){%>
+            <p id="errorMessage"> <%=data.errorMessage %></p>
+            <%}%>
             <p>
                 <label>Email</label>
-                <input type="email" id="email" name="email" required>
+                <input type="email" id="email" name="email" value="<%=data.email%>" required>
             </p>
             <p>
                 <label>Password</label>
-                <input type="password" id="password" name="password" minlength="6" required>
+                <input type="password" id="password" name="password" minlength="6" value="<%=data.password%>" required>
             </p>
 
             <section class="buttons">
@@ -24,7 +27,7 @@
                     <button type="reset">Reset</button>
                     <button type="submit">Submit</button>
                 </div>
-                <a href="/login">Login instead</a>
+                <a href="/login">Signup instead</a>
             </section>
         </form>
     </section>

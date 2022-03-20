@@ -18,6 +18,8 @@ const addCSRFTokenMiddleware = require('./middleware/csrfToken');
 /* Importing Routes */
 const baseRoute = require('./routes/base.route.js');
 const authRoute = require('./routes/auth.routes');
+const adminRoute = require('./routes/admin.routes');
+const {json} = require("express");
 
 /* --------------Importing done ------------- */
 
@@ -27,7 +29,9 @@ app.set('views', path.join(__dirname, 'views'));
 
 /* Setting up the public scripts and styles folder */
 app.use(express.static('public'));
+app.use('/products/assets',express.static('product-data'));
 app.use(express.urlencoded({extended: false}))
+app.use(express.json());
 
 /* Using sessions on all incoming requests */
 const sessionConfig=getSessionConfig();
@@ -43,6 +47,7 @@ app.use(addCSRFTokenMiddleware);
 /* This is the routes part */
 app.use(baseRoute);
 app.use(authRoute);
+app.use(adminRoute);
 app.use(errorHandlingMiddleware);
 
 

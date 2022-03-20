@@ -100,7 +100,7 @@ function getLoginPage(req,res){
     res.render('./authViews/login',{data:inputData});
 }
 
-async function postLoginPage(req,res){
+async function postLoginPage(req,res,next){
     const input=req.body;
     const email=input.email;
     const password=input.password;
@@ -109,9 +109,15 @@ async function postLoginPage(req,res){
         password:password
     }
 
+    let result;
     /* Check if the user has registered or not */
-    const result= await User.hasUserInDB(email);
-
+    try{
+        result= await User.hasUserInDB(email);
+    }
+    catch (e){
+        next(e);
+        return;
+    }
     /* User not existed */
     if(!result){
         dataFlushing.dataFlushing(req,{
@@ -136,7 +142,6 @@ async function postLoginPage(req,res){
         })
         return;
     }
-
     /* Details are correct */
     req.session.uid=result._id.toString();
     req.session.isAdmin=result.isAdmin;

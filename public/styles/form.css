@@ -27,7 +27,7 @@
     font-size: large;
     margin-bottom: var(--space-2);
 }
-.form form input{
+.form form input,.form form textarea{
     background-color: var(--color-input);
     width: 100%;
     border-radius: var(--border-radius-medium);
@@ -38,6 +38,7 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
+    margin-bottom: var(--space-4);
 }
 .form .buttons div{
     width: 100%;

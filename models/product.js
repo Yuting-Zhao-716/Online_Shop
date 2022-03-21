@@ -8,6 +8,7 @@ class Product {
         this.price=+productData.price;
         this.description=productData.description;
         this.image=productData.image /* This is the image name */
+        this.updateImageData();
         if(productData._id){
             this._id=productData._id.toString();
         }
@@ -38,6 +39,53 @@ class Product {
         }
     }
 
+    static async findAllProducts(){
+        const productList=await db.getDb().collection('products').find().toArray();
+        return productList.map(function (product){
+            return new Product(product);
+        });
+    }
 
+    static async findOneProduct(productId){
+        let _id;
+        try{
+            _id = new mongodb.ObjectId(productId);
+        }catch (e) {
+            e.code=404;
+            throw e;
+        }
+
+        const result= await db.getDb().collection('products').findOne({_id: _id});
+        if(!result){
+            const error = new Error('This product is not existed, please try another one');
+            error.code=404;
+            throw error;
+        }
+        return new Product(result);
+    }
+
+    static async deleteProduct(productId){
+        let _id;
+        try {
+            _id = new mongodb.ObjectId(productId);
+        }
+        catch (e) {
+            e.code=404;
+            throw e;
+            return;
+        }
+
+        await db.getDb().collection('products').deleteOne({_id:_id});
+    }
+
+    updateImageData(){
+        this.imagePath = `product-data/images/${this.image}`;
+        this.imageUrl = `/products/assets/images/${this.image}`;
+    }
+
+    replaceImageData(newImage){
+        this.image=newImage;
+        this.updateImageData();
+    }
 }
 module.exports=Product;

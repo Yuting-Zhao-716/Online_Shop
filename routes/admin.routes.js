@@ -9,6 +9,10 @@ router.get('/product-management/new', adminController.getNewProductPage);
 
 router.post('/product-management/new',imageUploadMiddleware ,adminController.postNewProduct);
 
+router.get('/update-product/:id', adminController.getUpdateProductPage);
 
+router.post('/update-product/:id',imageUploadMiddleware , adminController.postUpdatePage);
+
+router.delete('/delete-product/:id', adminController.deleteProduct);
 
 module.exports=router;

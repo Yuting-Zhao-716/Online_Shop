@@ -14,12 +14,14 @@ const getSessionConfig = require('./config/session');
 const errorHandlingMiddleware = require('./middleware/errorHandling');
 const checkAuthenticationMiddleware = require('./middleware/checkAuthentication');
 const addCSRFTokenMiddleware = require('./middleware/csrfToken');
+const protectAdminRoutesMiddleware = require('./middleware/protect-admin-routes');
 
 /* Importing Routes */
 const baseRoute = require('./routes/base.route.js');
 const authRoute = require('./routes/auth.routes');
 const adminRoute = require('./routes/admin.routes');
-const {json} = require("express");
+const productRoute = require('./routes/product.routes');
+
 
 /* --------------Importing done ------------- */
 
@@ -47,6 +49,8 @@ app.use(addCSRFTokenMiddleware);
 /* This is the routes part */
 app.use(baseRoute);
 app.use(authRoute);
+app.use(productRoute);
+app.use(protectAdminRoutesMiddleware);
 app.use(adminRoute);
 app.use(errorHandlingMiddleware);
 

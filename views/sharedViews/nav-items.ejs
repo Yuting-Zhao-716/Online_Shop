@@ -1,7 +1,7 @@
 <ul class='nav-items'>
 <!--    If the visitor is not an Admin-->
     <% if(!locals.isAdmin){%>
-        <li><a href="/">Shop</a></li>
+        <li><a href="/products">Shop</a></li>
     <%}%>
 
 <!--    If the visitor is not logged in yet    -->
@@ -18,7 +18,7 @@
 
 <!--    If the user is an Admin   -->
     <% if (locals.isAdmin){%>
-        <li><a href="/orderManagement">Manage Orders</a> </li>
+        <li><a href="/order-management">Manage Orders</a> </li>
         <li><a href="/product-management">Manage Products</a> </li>
     <%}%>
 

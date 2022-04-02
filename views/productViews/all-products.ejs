@@ -1,0 +1,21 @@
+<%- include('../sharedViews/head',{pageTitle:'New Product'}) %>
+
+<link href="/styles/products.css" rel="stylesheet"/>
+
+</head>
+<body>
+<%- include('../sharedViews/header') %>
+<main>
+    <h1>All products</h1>
+    <ul id="products-grid">
+        <% for (const product of products){%>
+            <li>
+                <%- include('../adminViews/product-item',{product:product})%>
+            </li>
+
+        <%}%>
+    </ul>
+
+</main>
+
+<%- include('../sharedViews/footer') %>

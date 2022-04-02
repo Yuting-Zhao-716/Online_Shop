@@ -4,6 +4,7 @@ const mongodb = require('mongodb');
 class Product {
     constructor(productData) {
         this.title=productData.title;
+        this.category=productData.category;
         this.summary=productData.summary;
         this.price=+productData.price;
         this.description=productData.description;
@@ -18,6 +19,7 @@ class Product {
     async save(){
         const productData={
             title:this.title,
+            category:this.category,
             summary:this.summary,
             price:this.price,
             description:this.description,
@@ -41,6 +43,12 @@ class Product {
 
     static async findAllProducts(){
         const productList=await db.getDb().collection('products').find().toArray();
+        return productList.map(function (product){
+            return new Product(product);
+        });
+    }
+    static async findAllProductsByCategory(category){
+        const productList=await db.getDb().collection('products').find({category:category}).toArray();
         return productList.map(function (product){
             return new Product(product);
         });

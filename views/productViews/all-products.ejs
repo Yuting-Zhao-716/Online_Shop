@@ -6,11 +6,11 @@
 <body>
 <%- include('../sharedViews/header') %>
 <main>
-    <h1>All products</h1>
+    <h1>All Categories</h1>
     <ul id="products-grid">
-        <% for (const product of products){%>
+        <% for (const category of categories){%>
             <li>
-                <%- include('../adminViews/product-item',{product:product})%>
+                <%- include('category-item',{category:category})%>
             </li>
 
         <%}%>

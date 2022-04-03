@@ -2,8 +2,8 @@ const Product = require('../models/product');
 
 async function getProductsPage(req,res,next){
     try{
-        const products = await Product.findAllProducts();
-        res.render('./productViews/all-products',{products: products});
+        const categories = await Product.findAllCategory();
+        res.render('./productViews/all-products',{categories:categories});
     }
     catch (e) {
         next(e);
@@ -22,13 +22,9 @@ async function getProductByCategoryPage(req,res,next){
 }
 
 async function getProductDetailPage(req,res,next){
-    console.log('Hi there!');
     const productId=req.params.id;
-    console.log(productId);
     try{
         const product=await Product.findOneProduct(productId);
-        console.log(product);
-  /*      res.render('./baseViews/index');*/
         res.render('./productViews/product-details',{product:product});
     }catch (e) {
         next(e);

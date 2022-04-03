@@ -47,6 +47,10 @@ class Product {
             return new Product(product);
         });
     }
+
+    static async findAllCategory(){
+        return await db.getDb().collection('categories').find().toArray();
+    }
     static async findAllProductsByCategory(category){
         const productList=await db.getDb().collection('products').find({category:category}).toArray();
         return productList.map(function (product){

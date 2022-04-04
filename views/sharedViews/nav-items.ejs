@@ -1,37 +1,37 @@
 <ul class='nav-items'>
-<!--    If the visitor is not an Admin-->
-    <% if(!locals.isAdmin){%>
-        <li><a href="/products">Shop</a></li>
-        <li><a href="/cart">Cart<span class="badge"><%=locals.cart.totalQuantity%></span></a></li>
-    <%}%>
+    <!--    If the visitor is not an Admin-->
+    <% if(!locals.isAdmin){ %>
+    <li><a href="/products">Shop</a></li>
+    <li><a href="/cart">Cart<span class="badge"><%= locals.cart.totalQuantity %></span></a></li>
+    <li><a href="/order">Queries</a></li>
+    <% } %>
 
-<!--    If the visitor is not logged in yet    -->
-    <% if(!locals.isAuth){%>
-        <li><a href="/signup">Signup</a></li>
+    <!--    If the visitor is not logged in yet    -->
+    <% if(!locals.isAuth){ %>
+        <!--<li><a href="/signup">Signup</a></li>-->
         <li><a href="/login">Login</a></li>
-    <%}%>
+    <% } %>
 
-<!--    If the user is logged in but not an Admin   -->
-    <% if(locals.isAuth&&!locals.isAdmin){ %>
-        <li><a href="/myFavorites">My Favorites</a> </li>
-        <li><a href="/myOrders">My Orders</a> </li>
-    <%}%>
+    <!--    If the user is logged in but not an Admin   -->
+    <% if(locals.isAuth && !locals.isAdmin){ %>
+        <!--  <li><a href="/myFavorites">My Favorites</a> </li>-->
 
-<!--    If the user is an Admin   -->
-    <% if (locals.isAdmin){%>
-        <li><a href="/order-management">Manage Orders</a> </li>
-        <li><a href="/product-management">Manage Products</a> </li>
-    <%}%>
+    <% } %>
 
-<!--    If the user is logged in   -->
-    <% if(locals.isAuth){%>
-            <li>
-            <form action="/logout" method="post">
-                <input type="hidden" name="_csrf" value="<%=locals.csrfToken%>">
-                <button>Logout</button>
-            </form>
-            </li>
-    <%}%>
+    <!--    If the user is an Admin   -->
+    <% if (locals.isAdmin){ %>
+        <li><a href="/order-management">Manage Orders</a></li>
+        <li><a href="/product-management">Manage Products</a></li>
+    <% } %>
 
+    <!--    If the user is logged in   -->
+    <% if(locals.isAuth){ %>
+    <li>
+        <form action="/logout" method="post">
+            <input type="hidden" name="_csrf" value="<%= locals.csrfToken %>">
+            <button>Logout</button>
+        </form>
+    </li>
+    <% } %>
 
 </ul>

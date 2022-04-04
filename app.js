@@ -23,7 +23,7 @@ const authRoute = require('./routes/auth.routes');
 const adminRoute = require('./routes/admin.routes');
 const productRoute = require('./routes/product.routes');
 const cartRoutes = require('./routes/cart.routes');
-
+const orderRoutes = require('./routes/order.routes');
 
 /* --------------Importing done ------------- */
 
@@ -56,6 +56,7 @@ app.use(baseRoute);
 app.use(authRoute);
 app.use(productRoute);
 app.use('/cart',cartRoutes);
+app.use('/order', orderRoutes);
 app.use(protectAdminRoutesMiddleware);
 app.use(adminRoute);
 app.use(errorHandlingMiddleware);

@@ -8,9 +8,6 @@ async function updateCart(event){
     const newQuantity=form.firstElementChild.value;
     let response;
 
-    console.log(csrf);
-    console.log(productId);
-    console.log(newQuantity);
     try{
         response= await fetch('/cart/items',{
             method:'PATCH',
@@ -32,15 +29,20 @@ async function updateCart(event){
         alert('update failed');
         return;
     }
-   /* const responseData=await response.json();
-    const cartItemTotalPriceElement = event.target.parentElement.querySelector('.cart-item-price');
-    cartItemTotalPriceElement.textContent = responseData.updatedCartData.newItemPrice.toFixed(2);
+    const responseData=await response.json();
 
+    /* check if the item is totally removed */
+    if(responseData.updatedCartData.newItemPrice===0){
+        form.parentElement.parentElement.remove();
+    }else{
+        const cartItemTotalPriceElement = event.target.parentElement.querySelector('.cart-item-price');
+        cartItemTotalPriceElement.textContent = responseData.updatedCartData.newItemPrice.toFixed(2);
+    }
     const cartTotalPriceElement = document.getElementById('cart-total-price');
-    cartTotalPriceElement.textContent = responseData.updatedCartData.newTotalPrice.toFixed(2);*/
+    cartTotalPriceElement.textContent = responseData.updatedCartData.newTotalPrice.toFixed(2);
 
-  /*  const badgeElement= document.querySelector('.nav-items .badge');
-    badgeElement.textContent=responseData.updatedCartData.newTotalQuantity;*/
+    const badgeElement= document.querySelector('.nav-items .badge');
+    badgeElement.textContent=responseData.updatedCartData.newTotalQuantity;
 
 }
 

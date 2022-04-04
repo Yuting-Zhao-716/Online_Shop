@@ -24,17 +24,15 @@ async function addItem(req, res, next) {
 }
 
 async function updateCartItem(req, res) {
-   /* console.log(req.body);*/
     const cart = res.locals.cart;
-    const priceObject = cart.update(req.body.productId, req.body.quantity);
-/*    console.log(priceObject);*/
+    const updateData = cart.update(req.body.productId, Number(req.body.quantity));
     req.session.cart = cart;
-    res.status(201).json({
+    res.json({
         message: 'Updated item',
         updatedCartData: {
             newTotalQuantity: cart.totalQuantity,
             newTotalPrice: cart.totalPrice,
-            newItemPrice: priceObject.newItemPrice
+            newItemPrice: updateData
         }
     })
 }

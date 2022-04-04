@@ -1,0 +1,24 @@
+<%- include('../sharedViews/head',{pageTitle:'Your Cart'}) %>
+
+<link href="/styles/cart.css" rel="stylesheet"/>
+<script src="/scripts/update-cart.js" defer></script>
+
+</head>
+<body>
+<%- include('../sharedViews/header') %>
+<main>
+    <h1>Your cart</h1>
+    <ul id="cart-items">
+        <% for (const item of locals.cart.items){ %>
+        <li>
+            <%- include('cart-item.ejs',{item:item})%>
+        </li>
+       <%}%>
+    </ul>
+    <div id="cart-total">
+        <p>Total:$ <span id="cart-total-price"><%=locals.cart.totalPrice.toFixed(2)%></span></p>
+        <button class="btn">Send to Query</button>
+    </div>
+</main>
+
+<%- include('../sharedViews/footer') %>

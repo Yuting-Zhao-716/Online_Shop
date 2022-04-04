@@ -15,12 +15,14 @@ const errorHandlingMiddleware = require('./middleware/errorHandling');
 const checkAuthenticationMiddleware = require('./middleware/checkAuthentication');
 const addCSRFTokenMiddleware = require('./middleware/csrfToken');
 const protectAdminRoutesMiddleware = require('./middleware/protect-admin-routes');
+const cartInitializerMiddleware = require('./middleware/cartInitializer');
 
 /* Importing Routes */
 const baseRoute = require('./routes/base.route.js');
 const authRoute = require('./routes/auth.routes');
 const adminRoute = require('./routes/admin.routes');
 const productRoute = require('./routes/product.routes');
+const cartRoutes = require('./routes/cart.routes');
 
 
 /* --------------Importing done ------------- */
@@ -32,8 +34,8 @@ app.set('views', path.join(__dirname, 'views'));
 /* Setting up the public scripts and styles folder */
 app.use(express.static('public'));
 app.use('/products/assets',express.static('product-data'));
-app.use(express.urlencoded({extended: false}))
-app.use(express.json());
+app.use(express.urlencoded({extended: false}))   // for handling form submission data.
+app.use(express.json());                                // for handling AJAX submission data.
 
 /* Using sessions on all incoming requests */
 const sessionConfig=getSessionConfig();
@@ -46,10 +48,14 @@ app.use(checkAuthenticationMiddleware);
 app.use(csrf());
 app.use(addCSRFTokenMiddleware);
 
+/* Adding Cart to res.locals */
+app.use(cartInitializerMiddleware);
+
 /* This is the routes part */
 app.use(baseRoute);
 app.use(authRoute);
 app.use(productRoute);
+app.use('/cart',cartRoutes);
 app.use(protectAdminRoutesMiddleware);
 app.use(adminRoute);
 app.use(errorHandlingMiddleware);

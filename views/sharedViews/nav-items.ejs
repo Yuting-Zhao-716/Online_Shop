@@ -2,6 +2,7 @@
 <!--    If the visitor is not an Admin-->
     <% if(!locals.isAdmin){%>
         <li><a href="/products">Shop</a></li>
+        <li><a href="/cart">Cart<span class="badge"><%=locals.cart.totalQuantity%></span></a></li>
     <%}%>
 
 <!--    If the visitor is not logged in yet    -->

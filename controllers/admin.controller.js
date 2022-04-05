@@ -6,6 +6,10 @@ async function getProductManagementPage(req,res,next){
     let productList;
     try{
         productList=await Product.findAllProducts();
+        console.log(productList);
+        for(const product of productList){
+            console.log(product.image.length);
+        }
         res.render('./adminViews/product-management',{productList:productList});
     }catch (e) {
         next(e);
@@ -30,8 +34,10 @@ function getNewProductPage(req,res){
 }
 
 async function postNewProduct(req, res,next){
+    console.log(req.body);
+    console.log(req.files);
+    const newProduct=new Product({...req.body,image:req.files})
 
-    const newProduct=new Product({...req.body,image:req.file.filename})
     try{
         await newProduct.save();
     }catch (e) {
@@ -44,8 +50,8 @@ async function postNewProduct(req, res,next){
 async function postUpdatePage(req,res,next){
     const updatedProduct= new Product({...req.body,_id:req.params.id});
     console.log(updatedProduct);
-    if(req.file){
-        updatedProduct.replaceImageData(req.file.filename);
+    if(req.files){
+        updatedProduct.replaceImageData(req.files);
     }
     try{
         await updatedProduct.save();

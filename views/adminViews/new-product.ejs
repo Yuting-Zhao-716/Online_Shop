@@ -17,9 +17,11 @@
             <div class="image-upload-control">
                 <p>
                     <label for="image">Image</label>
-                    <input type="file" id="image" name="image" accept="image/*">
+                    <input type="file" id="image" name="multi-files" accept="image/*" multiple>
                 </p>
-                <img class="image-preview" src="" alt="image-preview">
+                <% for(let i=0;i<5;i++){%>
+                    <img class="image-preview" src="" alt="image-preview">
+                <%}%>
             </div>
             <p>
                 <label for="cars">Choose a category:</label>
@@ -33,8 +35,13 @@
                 </select>
             </p>
             <p>
-                <label for="summary">Summary</label>
-                <input type="text" id="summary" name="summary" maxlength="250" required>
+                <label for="material">Material</label>
+                <select id="material" name="material">
+                    <option value="pu">PU</option>
+                    <option value="fiberglass">Fiberglass</option>
+                    <option value="carbonfibre">Carbonfibre</option>
+                    <option value="others">Others</option>
+                </select>
             </p>
             <p>
                 <label for="price">Price</label>

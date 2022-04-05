@@ -8,3 +8,15 @@ for(const optionElement of optionsElements){
         optionElement.selected='selected';
     };
 }
+
+const materialOptionsElements= document.querySelectorAll('#material option');
+const materialResultElement = document.getElementById('material-result');
+
+const materialResult= materialResultElement.value;
+
+for(const materialElement of materialOptionsElements){
+    if(materialElement.value===materialResult){
+        materialElement.selected='selected';
+    };
+}
+

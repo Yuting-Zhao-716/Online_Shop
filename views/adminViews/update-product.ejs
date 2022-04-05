@@ -18,9 +18,11 @@
         <div class="image-upload-control">
             <p>
                 <label for="image">Image</label>
-                <input type="file" id="image" name="image" accept="image/*">
+                <input type="file" id="image" name="multi-files" accept="image/*" multiple>
             </p>
+            <% for(let i=0;i<5;i++){%>
             <img class="image-preview" src="" alt="image-preview">
+            <%}%>
         </div>
         <input type="hidden" id="cate-result" value="<%=product.category%>" disabled>
         <p>
@@ -34,9 +36,15 @@
                 <option value="mazda">Mazda</option>
             </select>
         </p>
+        <input type="hidden" id="material-result" value="<%=product.material%>" disabled>
         <p>
-            <label for="summary">Summary</label>
-            <input type="text" id="summary" name="summary" maxlength="250" value="<%=product.summary%>" required>
+            <label for="material">Material</label>
+            <select id="material" name="material">
+                <option value="pu">PU</option>
+                <option value="fiberglass">Fiberglass</option>
+                <option value="carbonfibre">Carbonfibre</option>
+                <option value="others">Others</option>
+            </select>
         </p>
         <p>
             <label for="price">Price</label>

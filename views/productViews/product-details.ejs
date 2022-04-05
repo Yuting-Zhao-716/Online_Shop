@@ -9,14 +9,17 @@
 <%- include('../sharedViews/header') %>
 <main id="product-details">
     <header>
-        <img src="<%=product.imageUrl%>" alt="PRODUCT-IMAGE"/>
+        <%for (let i=0;i<product.image.length;i++){%>
+        <img src="/products/assets/images/<%=product.image[i].filename%>" alt="<%=product.title%>">
+        <%}%>
+
         <div id="product-info">
             <h1><%=product.title%></h1>
             <p>Price: <%=product.price%></p>
             <button class="btn-alt btn" data-productid="<%=product._id%>" data-csrf="<%=locals.csrfToken%>">Add to Cart</button>
         </div>
     </header>
-    <p id="product-description"><%=product.summary%></p>
+    <p id="product-description"><%=product.category%></p>
     <p id="product-description"><%=product.description%></p>
 </main>
 

@@ -5,10 +5,10 @@ class Product {
     constructor(productData) {
         this.title=productData.title;
         this.category=productData.category;
-        this.summary=productData.summary;
+        this.material=productData.material;
         this.price=+productData.price;
         this.description=productData.description;
-        this.image=productData.image /* This is the image name */
+        this.image=productData.image /* This is the image name */ /* image objects instead */
         this.updateImageData();
         if(productData._id){
             this._id=productData._id.toString();
@@ -20,7 +20,7 @@ class Product {
         const productData={
             title:this.title,
             category:this.category,
-            summary:this.summary,
+            material:this.material,
             price:this.price,
             description:this.description,
             image:this.image
@@ -91,8 +91,8 @@ class Product {
     }
 
     updateImageData(){
-        this.imagePath = `product-data/images/${this.image}`;
-        this.imageUrl = `/products/assets/images/${this.image}`;
+ /*       this.imagePath = `product-data/images/${this.image}`;
+        this.imageUrl = `/products/assets/images/${this.image}`;*/
     }
 
     replaceImageData(newImage){

@@ -1,5 +1,7 @@
 <article class="product-item">
-    <img src="<%=product.imageUrl%>" alt="<%=product.title%>">
+   <%for (let i=0;i<product.image.length;i++){%>
+    <img src="/products/assets/images/<%=product.image[i].filename%>" alt="<%=product.title%>">
+    <%}%>
     <div class="product-item-content">
         <h2><%=product.title%></h2>
 

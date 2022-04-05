@@ -1,4 +1,5 @@
 const Product = require('../models/product');
+const Order = require("../models/order");
 
 
 async function getProductManagementPage(req,res,next){
@@ -66,6 +67,33 @@ async function deleteProduct(req,res,next){
     res.json({message: 'Deleted Item'});
 }
 
+async function getOrdersPage(req,res,next){
+    try {
+        const orders = await Order.findAll();
+        res.render('./orderViews/admin-order.ejs', {
+            orders: orders
+        });
+    } catch (error) {
+        next(error);
+    }
+}
+async function updateOrder(req,res,next){
+    const orderId = req.params.id;
+    const newStatus = req.body.newStatus;
+
+    try {
+        const order = await Order.findById(orderId);
+
+        order.status = newStatus;
+
+        await order.save();
+
+        res.json({ message: 'Order updated', newStatus: newStatus });
+    } catch (error) {
+        next(error);
+    }
+}
+
 module.exports={
     getProductManagementPage:getProductManagementPage,
     getNewProductPage:getNewProductPage,
@@ -73,4 +101,6 @@ module.exports={
     getUpdateProductPage:getUpdateProductPage,
     postUpdatePage:postUpdatePage,
     deleteProduct:deleteProduct,
+    getOrdersPage:getOrdersPage,
+    updateOrder:updateOrder
 }

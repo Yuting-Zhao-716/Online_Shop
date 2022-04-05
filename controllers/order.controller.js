@@ -1,6 +1,14 @@
 const Order = require('../models/order');
 
-function getOrderPage(req,res){
+async function getOrderPage(req,res,next){
+    try {
+        const orders = await Order.findAll();
+        res.render('customer/orders/all-orders', {
+            orders: orders,
+        });
+    } catch (error) {
+        next(error);
+    }
     res.render('./orderViews/all-order.ejs');
 }
 async function postOrder(req,res,next){

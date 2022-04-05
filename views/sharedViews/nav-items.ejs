@@ -2,8 +2,8 @@
     <!--    If the visitor is not an Admin-->
     <% if(!locals.isAdmin){ %>
     <li><a href="/products">Shop</a></li>
-    <li><a href="/cart">Cart<span class="badge"><%= locals.cart.totalQuantity %></span></a></li>
-    <li><a href="/order">Queries</a></li>
+    <li><a href="/cart">Query<span class="badge"><%= locals.cart.totalQuantity %></span></a></li>
+   <!-- <li><a href="/order">Queries</a></li>-->
     <% } %>
 
     <!--    If the visitor is not logged in yet    -->
@@ -20,7 +20,7 @@
 
     <!--    If the user is an Admin   -->
     <% if (locals.isAdmin){ %>
-        <li><a href="/order-management">Manage Orders</a></li>
+        <li><a href="/admin/orders">Manage Orders</a></li>
         <li><a href="/product-management">Manage Products</a></li>
     <% } %>
 

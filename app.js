@@ -16,6 +16,7 @@ const checkAuthenticationMiddleware = require('./middleware/checkAuthentication'
 const addCSRFTokenMiddleware = require('./middleware/csrfToken');
 const protectAdminRoutesMiddleware = require('./middleware/protect-admin-routes');
 const cartInitializerMiddleware = require('./middleware/cartInitializer');
+const updateCartPriceMiddleware = require('./middleware/update-cart-price');
 
 /* Importing Routes */
 const baseRoute = require('./routes/base.route.js');
@@ -50,6 +51,7 @@ app.use(addCSRFTokenMiddleware);
 
 /* Adding Cart to res.locals */
 app.use(cartInitializerMiddleware);
+app.use(updateCartPriceMiddleware);
 
 /* This is the routes part */
 app.use(baseRoute);

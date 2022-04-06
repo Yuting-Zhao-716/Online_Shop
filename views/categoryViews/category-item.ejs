@@ -1,0 +1,12 @@
+<article class="product-item">
+
+    <div class="product-item-content">
+        <h2><%=category.brand%></h2>
+        <h3><%=category.model%></h3>
+        <h3><%=category.generation%></h3>
+        <div class="product-item-actions">
+            <button id='deleteButton' class="btn btn-alt" data-categoryid="<%=category._id%>" data-csrf="<%=locals.csrfToken%>">Delete</button>
+        </div>
+
+    </div>
+</article>

@@ -1,0 +1,38 @@
+<%- include('../sharedViews/head',{pageTitle:'New Product'}) %>
+<link href="/styles/form.css" rel="stylesheet">
+
+
+</head>
+<body>
+<%- include('../sharedViews/header') %>
+<main>
+    <section class="form">
+        <h1>Add New Product</h1>
+        <form action="/category-management/new " method="post">
+            <input type="hidden" name="_csrf" value="<%=locals.csrfToken%>">
+            <p>
+                <label for="brand">Brand</label>
+                <input type="text" id="brand" name="brand" required>
+            </p>
+
+            <p>
+                <label for="model">Model</label>
+                <input type="text" id="model" name="model" required>
+            </p>
+            <p>
+                <label for="generation">Generation</label>
+                <input type="text" id="generation" name="generation" required>
+            </p>
+
+            <section class="buttons">
+                <div>
+                    <button type="reset" class="btn btn-alt">Reset</button>
+                    <button class="btn">Save</button>
+                </div>
+            </section>
+        </form>
+
+    </section>
+</main>
+
+<%- include('../sharedViews/footer') %>

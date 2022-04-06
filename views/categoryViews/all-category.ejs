@@ -1,0 +1,28 @@
+
+<%-include('../sharedViews/head',{pageTitle:'Product Management'})%>
+<link href="./styles/products.css" rel="stylesheet">
+<script src="/scripts/category-deletion.js" defer></script>
+
+</head>
+<body>
+<%- include('../sharedViews/header')%>
+<main>
+    <h1>Category Administration</h1>
+    <section>
+        <h2>Manage categories</h2>
+        <p>
+            <a href="/category-management/new" class="btn">Add Category</a>
+        </p>
+    </section>
+    <section>
+        <ul id="products-grid">
+            <% for (const category of categoryList){%>
+                <li>
+                    <%-include('./category-item',{category:category})%>
+                </li>
+            <% } %>
+        </ul>
+    </section>
+</main>
+
+<%- include('../sharedViews/footer')%>

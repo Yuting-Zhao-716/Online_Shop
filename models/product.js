@@ -4,9 +4,12 @@ const mongodb = require('mongodb');
 class Product {
     constructor(productData) {
         this.title=productData.title;
-        this.category=productData.category;
+        this.brand=productData.brand;
+        this.model=productData.model;
+        this.generation=productData.generation;
         this.material=productData.material;
         this.price=+productData.price;
+        this.stock=productData.stock;
         this.description=productData.description;
         this.image=productData.image /* This is the image name */ /* image objects instead */
         this.updateImageData();
@@ -19,9 +22,12 @@ class Product {
     async save(){
         const productData={
             title:this.title,
-            category:this.category,
+            brand:this.brand,
+            model:this.model,
+            generation:this.generation,
             material:this.material,
             price:this.price,
+            stock:this.stock,
             description:this.description,
             image:this.image
         }
@@ -48,11 +54,11 @@ class Product {
         });
     }
 
-    static async findAllCategory(){
+  /*  static async findAllCategory(){
         return await db.getDb().collection('categories').find().toArray();
-    }
-    static async findAllProductsByCategory(category){
-        const productList=await db.getDb().collection('products').find({category:category}).toArray();
+    }*/
+    static async findAllProductsByGeneration(generation){
+        const productList=await db.getDb().collection('products').find({generation:generation}).toArray();
         return productList.map(function (product){
             return new Product(product);
         });

@@ -29,25 +29,34 @@ class Category{
     static async findModelByBrand(brand){
         const records= await db.getDb().collection('categories').find({brand:brand}).toArray();
         const allModels=[];
-        for(const record in records){
+        for(const record of records){
             if(!allModels.includes(record.model)){
                 allModels.push(record.model);
             }
         }
-        console.log(allModels);
         return allModels;
     }
 
     static async  findGenerationByModel(model){
         const records= await db.getDb().collection('categories').find({model:model}).toArray();
         const allGenerations=[];
-        for(const record in records){
+        for(const record of records){
             if(!allGenerations.includes(record.generation)){
                 allGenerations.push(record.generation);
             }
         }
-        console.log(allGenerations);
         return allGenerations;
+    }
+
+    static async  findAllBrands(){
+        const records= await db.getDb().collection('categories').find().toArray();
+        const allBrands=[];
+        for(const record of records){
+            if(!allBrands.includes(record.brand)){
+                allBrands.push(record.brand);
+            }
+        }
+        return allBrands;
     }
 
     static  async findAllRecords(){
@@ -56,7 +65,9 @@ class Category{
             return new Category(record.brand,record.model,record.generation,record._id);
         })
     }
-    static async delete(categoryId){
+
+
+    async delete(categoryId){
         let _id;
         try {
             _id = new mongodb.ObjectId(categoryId);

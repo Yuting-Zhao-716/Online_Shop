@@ -51,6 +51,10 @@
             <input type="number" id="price" name="price" min="0.01" step="0.01" value="<%=product.price%>" required>
         </p>
         <p>
+            <label for="stock">Stock</label>
+            <input type="text" id="stock" name="stock" value="<%=product.stock%>" required>
+        </p>
+        <p>
             <label for="description">Description</label>
             <textarea id="description" name="description" rows="7" required><%=product.description%></textarea>
         </p>

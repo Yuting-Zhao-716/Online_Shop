@@ -1,13 +1,52 @@
 const Product = require('../models/product');
+const Category = require('../models/category');
 
-async function getProductsPage(req,res,next){
+async function getBrandsPage(req,res,next){
     try{
-        const categories = await Product.findAllCategory();
-        res.render('./productViews/all-products',{categories:categories});
+        const brands = await Category.findAllBrands();
+        res.render('./productViews/all-brands',{brands:brands});
     }
     catch (e) {
         next(e);
     }
+}
+
+async function getModelsByBrandPage(req,res,next){
+    const brand=req.params.brand;
+    console.log(brand);
+    let models;
+    try{
+        models=await Category.findModelByBrand(brand);
+    }catch (e) {
+        next(e);
+        return;
+    }
+    res.render('./productViews/all-models',{models:models});
+
+}
+async function getGenerationsByModelPage(req,res,next){
+    const model=req.params.model;
+    let generations;
+    try{
+        generations=await Category.findGenerationByModel(model);
+    }catch (e) {
+        next(e);
+        return;
+    }
+    res.render('./productViews/all-generations',{generations:generations});
+
+}
+async function getPartsByGenerationPage(req,res,next){
+    const generation=req.params.generation;
+    let products;
+    try{
+        products=await Product.findAllProductsByGeneration(generation);
+    }catch (e) {
+        next(e);
+        return;
+    }
+    res.render('./productViews/all-products',{products:products});
+
 }
 
 async function getProductByCategoryPage(req,res,next){
@@ -34,7 +73,10 @@ async function getProductDetailPage(req,res,next){
 
 
 module.exports={
-    getProductsPage:getProductsPage,
+    getBrandsPage:getBrandsPage,
     getProductDetailPage:getProductDetailPage,
     getProductByCategoryPage:getProductByCategoryPage,
+    getModelsByBrandPage:getModelsByBrandPage,
+    getGenerationsByModelPage:getGenerationsByModelPage,
+    getPartsByGenerationPage:getPartsByGenerationPage,
 }

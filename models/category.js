@@ -67,7 +67,7 @@ class Category{
     }
 
 
-    async delete(categoryId){
+    static async delete(categoryId){
         let _id;
         try {
             _id = new mongodb.ObjectId(categoryId);

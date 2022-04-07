@@ -13,7 +13,6 @@ async function getBrandsPage(req,res,next){
 
 async function getModelsByBrandPage(req,res,next){
     const brand=req.params.brand;
-    console.log(brand);
     let models;
     try{
         models=await Category.findModelByBrand(brand);

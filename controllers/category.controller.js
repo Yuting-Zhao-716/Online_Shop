@@ -1,10 +1,10 @@
 const Category = require('../models/category');
+const {getGenerationsByModelPage} = require("./product.controller");
 
 async function getCategoryManagementPage(req, res, next) {
     let categoryList;
     try {
         categoryList = await Category.findAllRecords();
-        console.log(categoryList);
     } catch (e) {
         next(e);
         return;
@@ -19,7 +19,6 @@ function getNewCategoryPage(req, res, next) {
 async function postNewCategory(req,res,next){
     try{
         const newCategory = new Category(req.body.brand, req.body.model, req.body.generation);
-        console.log(newCategory);
         await newCategory.save();
     }
     catch (e) {
@@ -41,9 +40,38 @@ async function deleteCategory(req,res,next){
     })
 }
 
+async function findModelByBrand(req,res,next){
+    let results;
+    try{
+        results = await Category.findModelByBrand(req.params.brand);
+    }catch (e) {
+        next(e);
+        return;
+    }
+    res.json({
+        message:'models found.',
+        models:results
+    });
+}
+async function findGenerationByModel(req,res,next){
+    let results;
+    try{
+        results = await Category.findGenerationByModel(req.params.model);
+    }catch (e) {
+        next(e);
+        return;
+    }
+    res.json({
+        message:'models found.',
+        generations:results
+    });
+}
+
 module.exports = {
     getCategoryManagementPage: getCategoryManagementPage,
     getNewCategoryPage: getNewCategoryPage,
     postNewCategory:postNewCategory,
-    deleteCategory:deleteCategory
+    deleteCategory:deleteCategory,
+    findModelByBrand:findModelByBrand,
+    findGenerationByModel:findGenerationByModel
 }

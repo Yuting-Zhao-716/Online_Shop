@@ -1,6 +1,7 @@
 <%- include('../sharedViews/head',{pageTitle:'New Product'}) %>
 <link href="/styles/form.css" rel="stylesheet">
 <script src="/scripts/image-preview.js" defer></script>
+<script src="/scripts/change-model-generation.js" defer></script>
 
 </head>
 <body>
@@ -24,14 +25,27 @@
                 <%}%>
             </div>
             <p>
-                <label for="cars">Choose a category:</label>
-                <select id="category" name="category">
+                <label for="brand">Choose a brand:</label>
+                <select id="brand" name="brand">
+                    <option value="">Please select a brand</option>
                     <option value="honda">Honda</option>
                     <option value="mitsubishi">Mitsubishi</option>
                     <option value="subaru">Subaru</option>
                     <option value="toyota">toyota</option>
                     <option value="nissan">Nissan</option>
                     <option value="mazda">Mazda</option>
+                </select>
+            </p>
+            <p>
+                <label for="model">Choose a model:</label>
+                <select id="model" name="model">
+
+                </select>
+            </p>
+            <p>
+                <label for="generation">Choose a generation:</label>
+                <select id="generation" name="generation">
+
                 </select>
             </p>
             <p>

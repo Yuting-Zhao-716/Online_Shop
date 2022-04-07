@@ -7,10 +7,10 @@
 
         <div class="product-item-actions">
             <% if (locals.isAdmin){%>
-            <a href="/update-product/<%=product._id%>" class="btn btn-alt">View & Edit</a>
-            <button class="btn btn-alt" data-productid="<%=product._id%>" data-csrf="<%=locals.csrfToken%>">Delete</button>
+            <a href="/update-product/<%=product._id%>" class="btn btn-primary">View & Edit</a>
+            <button class="btn btn-primary" data-productid="<%=product._id%>" data-csrf="<%=locals.csrfToken%>">Delete</button>
             <%}else{%>
-            <a class="btn btn-alt" href="/products/<%=product._id%>">View Details</a>
+            <a class="btn btn-primary" href="/products/<%=product._id%>">View Details</a>
             <%}%>
         </div>
 

@@ -7,25 +7,28 @@
 <%- include('../sharedViews/header')%>
 <main>
     <section class="form">
-        <h1>Log in Now</h1>
+
+
         <form action="/login" method="post">
+            <h1>Log in Now</h1>
             <input type="hidden" name="_csrf" value="<%=locals.csrfToken%>">
             <% if(data.errorMessage){%>
             <p id="errorMessage"> <%=data.errorMessage %></p>
             <%}%>
-            <p>
-                <label>Email</label>
-                <input type="email" id="email" name="email" value="<%=data.email%>" required>
+            <p class="mb-3">
+                <label class="form-label">Email</label>
+                <input class="form-control" aria-describedby="emailHelp" type="email" id="email" name="email" value="<%=data.email%>" required>
+                <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
             </p>
-            <p>
-                <label>Password</label>
-                <input type="password" id="password" name="password" minlength="6" value="<%=data.password%>" required>
+            <p class="mb-3">
+                <label class="form-label">Password</label>
+                <input class="form-control" type="password" id="password" name="password" minlength="6" value="<%=data.password%>" required>
             </p>
 
             <section class="buttons">
                 <div>
-                    <button type="reset">Reset</button>
-                    <button type="submit">Submit</button>
+                    <button type="reset" class="btn btn-primary">Reset</button>
+                    <button type="submit" class="btn btn-primary">Submit</button>
                 </div>
                 <a href="/login">Signup instead</a>
             </section>

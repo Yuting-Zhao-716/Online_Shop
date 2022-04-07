@@ -1,81 +1,32 @@
-.form {
-    width: 70%;
-    margin: var(--space-4) auto;
-    border: 2px solid var(--color-blueberry-primary);
-    background-color: var(--color-form);
-    border-radius: var(--border-radius-large);
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
+form{
+    max-width: 50%;
+    margin:8rem auto;
 }
 
-.form h1{
+form h1{
     text-align: center;
 }
-.form #errorMessage{
-    color: var(--color-errorMessage);
-    text-align: center;
-    font-size: large;
-}
-.form form{
-    width: 80%;
-}
-.form form label{
-    display: block;
-    font-weight: bold;
-    font-size: large;
-    margin-bottom: var(--space-2);
-}
-.form form input,.form form textarea{
-    background-color: var(--color-input);
-    width: 100%;
-    border-radius: var(--border-radius-medium);
-    padding: var(--space-2);
-}
-.form .buttons{
+.buttons{
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     align-items: center;
-    margin-bottom: var(--space-4);
+    justify-content: space-between;
 }
-.form .buttons div{
-    width: 100%;
+.buttons div {
+    width: 60%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding:2rem;
+}
+form img {
+    max-width: 20rem;
+    max-height: 10rem;
+    object-fit: cover;
+}
+.image-upload-control div{
     display: flex;
     justify-content: space-around;
     align-items: center;
-}
-.form .buttons a {
-    margin: var(--space-4) auto;
-    color: var(--color-paragraph) !important;
-}
-.form .buttons button, .form .buttons a {
-    color: var(--color-maintext);
-    padding: var(--space-1) var(--space-2);
-    font-size: x-large;
-    border-radius: var(--border-radius-medium);
-}
-.form .buttons button:hover, .form .buttons a:hover {
-    cursor: pointer;
-    background-color: var(--color-blueberry-primary);
-}
-.form .buttons a:hover {
-    color: var(--color-maintext) !important;
-}
-
-/* For the image preview function */
-.image-upload-control{
-    display: flex;
-    align-items: center;
-}
-.image-upload-control input{
-    max-width:15rem;
-}
-.image-upload-control img {
-    width: 4rem;
-    height: 4rem;
-    object-fit: cover;
-    border-radius: var(--border-radius-small);
-    display: none;
+    flex-direction: row;
 }

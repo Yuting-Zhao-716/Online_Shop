@@ -1,19 +1,49 @@
-<header id="main-header">
-    <div id="logo">
-        <a href="/">Speedfactory NZ</a>
-    </div>
-    <nav>
-        <%- include('nav-items') %>
-    </nav>
-    <button id="mobile-menu-btn">
-        <span></span>
-        <span></span>
-        <span></span>
-    </button>
-</header>
-<aside id="mobile-menu">
-    <nav>
-        <%- include('nav-items') %>
-    </nav>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/">Speedfactory NZ</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <% if(!locals.isAdmin){ %>
+                    <li class="nav-item">
+                        <a class="nav-link"  href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/products">Shop</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/cart">Query</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/login">Login</a>
+                    </li>
+                <% } %>
+                <% if (locals.isAdmin){ %>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/products">Shop</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/product-management">Manage Products</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/category-management">Manage Categories</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/admin/orders">Manage Orders</a>
+                    </li>
+                    <li class="nav-item">
+                        <form action="/logout" method="post">
+                            <input type="hidden" name="_csrf" value="<%= locals.csrfToken %>">
+                            <button class="nav-link">Logout</button>
+                        </form>
 
-</aside>
+                    </li>
+
+                <% } %>
+            </ul>
+
+        </div>
+    </div>
+</nav>

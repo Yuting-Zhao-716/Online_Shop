@@ -1,20 +1,25 @@
 <%- include('../sharedViews/head',{pageTitle:'New Product'}) %>
 
-<link href="/styles/products.css" rel="stylesheet"/>
+<!--<link href="/styles/products.css" rel="stylesheet"/>-->
 
 </head>
 <body>
 <%- include('../sharedViews/header') %>
 <main>
     <h1>All Brands</h1>
-    <ul id="products-grid">
-        <% for (const brand of brands){%>
-            <li>
-                <%- include('brand-item',{brand:brand})%>
-            </li>
 
-        <%}%>
-    </ul>
+    <div class="row">
+
+        <% for (const brand of brands){ %>
+            <div class="col-sm-6">
+
+                <%- include('brand-item',{brand:brand}) %>
+
+            </div>
+
+        <% } %>
+    </div>
+
 
 </main>
 

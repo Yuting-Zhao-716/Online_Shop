@@ -11,23 +11,26 @@
     <section class="form">
     <h1>Edit Product</h1>
     <form action="/update-product/<%=product._id%>?_csrf=<%=locals.csrfToken%>" method="post" enctype="multipart/form-data">
-        <p>
-            <label for="title">Title</label>
-            <input type="text" id="title" name="title" value="<%=product.title%>" required>
+        <p class="mb-3">
+            <label class="form-label" for="title">Title</label>
+            <input class="form-control" type="text" id="title" name="title" value="<%=product.title%>" required>
         </p>
-        <div class="image-upload-control">
+        <div class="image-upload-control mb-3">
             <p>
-                <label for="image">Image</label>
-                <input type="file" id="image" name="multi-files" accept="image/*" multiple>
+                <label class="form-label" for="image">Image</label>
+                <input class="form-control" type="file" id="image" name="multi-files" accept="image/*" multiple>
             </p>
-            <% for(let i=0;i<5;i++){%>
-            <img class="image-preview" src="" alt="image-preview">
-            <%}%>
+            <div>
+                <% for(let i=0;i<5;i++){%>
+                    <img class="image-preview" src="" display="none">
+                <%}%>
+            </div>
+
         </div>
         <input type="hidden" id="cate-result" value="<%=product.category%>" disabled>
-        <p>
-            <label for="cars">Choose a category:</label>
-            <select id="category" name="category">
+        <p class="mb-3">
+            <label class="form-label" for="cars">Choose a category:</label>
+            <select class="form-select" id="category" name="category">
                 <option value="honda">Honda</option>
                 <option value="mitsubishi">Mitsubishi</option>
                 <option value="subaru">Subaru</option>
@@ -36,31 +39,43 @@
                 <option value="mazda">Mazda</option>
             </select>
         </p>
+        <p class="mb-3">
+            <label class="form-label" for="model">Choose a model:</label>
+            <select class="form-select" id="model" name="model">
+
+            </select>
+        </p>
+        <p class="mb-3">
+            <label class="form-label" for="generation">Choose a generation:</label>
+            <select class="form-select" id="generation" name="generation">
+
+            </select>
+        </p>
         <input type="hidden" id="material-result" value="<%=product.material%>" disabled>
-        <p>
-            <label for="material">Material</label>
-            <select id="material" name="material">
+        <p class="mb-3">
+            <label class="form-label" for="material">Material</label>
+            <select class="form-select" id="material" name="material">
                 <option value="pu">PU</option>
                 <option value="fiberglass">Fiberglass</option>
                 <option value="carbonfibre">Carbonfibre</option>
                 <option value="others">Others</option>
             </select>
         </p>
-        <p>
-            <label for="price">Price</label>
-            <input type="number" id="price" name="price" min="0.01" step="0.01" value="<%=product.price%>" required>
+        <p class="mb-3">
+            <label class="form-label" for="price">Price</label>
+            <input class="form-control" type="number" id="price" name="price" min="0.01" step="0.01" value="<%=product.price%>" required>
         </p>
-        <p>
-            <label for="stock">Stock</label>
-            <input type="text" id="stock" name="stock" value="<%=product.stock%>" required>
+        <p class="mb-3">
+            <label class="form-label" for="stock">Stock</label>
+            <input class="form-control" type="text" id="stock" name="stock" value="<%=product.stock%>" required>
         </p>
-        <p>
-            <label for="description">Description</label>
-            <textarea id="description" name="description" rows="7" required><%=product.description%></textarea>
+        <p class="mb-3">
+            <label class="form-label" for="description">Description</label>
+            <textarea class="form-control" id="description" name="description" rows="7" required><%=product.description%></textarea>
         </p>
-        <p>
-            <button type="reset" class="btn btn-alt">Reset</button>
-            <button class="btn">Save</button>
+        <p class="mb-3">
+            <button type="reset" class="btn btn-primary">Reset</button>
+            <button class="btn btn-primary">Save</button>
         </p>
     </form>
     </section>

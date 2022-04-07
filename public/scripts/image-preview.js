@@ -31,7 +31,7 @@ function addPreview(){
     const pickedFile = files;
     for(let i=0;i<pickedFile.length;i++){
         imagePreviewElements[i].src = URL.createObjectURL(pickedFile[i]);
-        imagePreviewElements[i].style.display = 'block';
+        imagePreviewElements[i].style.display = 'inline-block';
     }
 }
 

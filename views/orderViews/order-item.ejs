@@ -21,12 +21,12 @@
             <form>
                 <input type="hidden" name="_csrf" value="<%= locals.csrfToken %>">
                 <input type="hidden" name="orderid" value="<%= order._id %>">
-                <select name="status">
+                <select class="form-select" name="status">
                     <option value="pending" <% if (order.status === 'pending') { %>selected<% } %>>Pending</option>
                     <option value="fulfilled" <% if (order.status === 'fulfilled') { %>selected<% } %>>Fulfilled</option>
                     <option value="cancelled" <% if (order.status === 'cancelled') { %>selected<% } %>>Cancelled</option>
                 </select>
-                <button class="btn btn-alt">Update</button>
+                <button class="btn btn-primary">Update</button>
             </form>
         </section>
     <% } %>

@@ -1,10 +1,9 @@
-
-
-<div class="card">
-    <div class="card-body">
-        <img src="/products/assets/brand/<%=brand%>.png" class="card-img-top" alt="<%=brand%>">
-        <h5 class="card-title"><%=brand%></h5>
-        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-        <a href="/products/<%=brand%>/models" class="btn btn-primary">Go somewhere</a>
+<div class="col-12 col-md-6 col-lg-3">
+    <div class="card text-center ">
+        <img src="/products/assets/brand/<%= brand %>.png" class="card-img-top" alt="<%= brand %>">
+        <div class="card-body">
+            <h5 class="card-title"><%= brand.toUpperCase() %></h5>
+            <a href="/products/<%= brand %>/models" class="btn btn-primary">Shop</a>
+        </div>
     </div>
 </div>

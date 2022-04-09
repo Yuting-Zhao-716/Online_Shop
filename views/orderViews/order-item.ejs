@@ -1,3 +1,4 @@
+
 <article class="order-item">
     <header class="order-summary">
         <h2><span class="order-item-price">$<%= order.productData.totalPrice.toFixed(2) %></span> - <%= order.formattedDate %></h2>
@@ -21,6 +22,7 @@
             <form>
                 <input type="hidden" name="_csrf" value="<%= locals.csrfToken %>">
                 <input type="hidden" name="orderid" value="<%= order._id %>">
+                <label for="status">Current Status: </label>
                 <select class="form-select" name="status">
                     <option value="pending" <% if (order.status === 'pending') { %>selected<% } %>>Pending</option>
                     <option value="fulfilled" <% if (order.status === 'fulfilled') { %>selected<% } %>>Fulfilled</option>

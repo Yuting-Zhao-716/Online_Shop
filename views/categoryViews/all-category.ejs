@@ -7,21 +7,24 @@
 <body>
 <%- include('../sharedViews/header')%>
 <main>
-    <h1>Category Administration</h1>
+    <h1 class="text-center">Category Administration</h1>
     <section>
-        <h2>Manage categories</h2>
-        <p>
+
+        <p style="padding-left:1rem">
             <a href="/category-management/new" class="btn btn-primary">Add Category</a>
         </p>
     </section>
     <section>
-        <ul id="products-grid">
+
+        <div class="container">
+            <div class="row g-3">
             <% for (const category of categoryList){%>
-                <li>
+
                     <%-include('./category-item',{category:category})%>
-                </li>
+
             <% } %>
-        </ul>
+            </div>
+        </div>
     </section>
 </main>
 

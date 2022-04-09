@@ -1,6 +1,6 @@
 <%- include('../sharedViews/head',{pageTitle:'Product Details'}) %>
 
-<link href="/styles/products.css" rel="stylesheet"/>
+
 <script src="/scripts/add-item-to-cart.js" type="text/javascript" defer></script>
 
 
@@ -8,19 +8,22 @@
 <body>
 <%- include('../sharedViews/header') %>
 <main id="product-details">
-    <header>
-        <%for (let i=0;i<product.image.length;i++){%>
-        <img src="/products/assets/images/<%=product.image[i].filename%>" alt="<%=product.title%>">
-        <%}%>
-
-        <div id="product-info">
-            <h1><%=product.title%></h1>
-            <p>Price: <%=product.price%></p>
-            <button class="btn-alt btn" data-productid="<%=product._id%>" data-csrf="<%=locals.csrfToken%>">Add to Cart</button>
+    <div class="card text-center">
+        <div class="card-imgs">
+            <%for (let i=0;i<product.image.length;i++){%>
+            <img class="card-img-top" src="/products/assets/images/<%=product.image[i].filename%>" alt="<%=product.title%>">
+            <%}%>
         </div>
-    </header>
-    <p id="product-description"><%=product.category%></p>
-    <p id="product-description"><%=product.description%></p>
+
+
+        <div id="product-info" class="card-body">
+            <h1 class="card-title"><%=product.title%></h1>
+            <p class="card-text">Price: <%=product.price%></p>
+            <button class="btn btn-primary" data-productid="<%=product._id%>" data-csrf="<%=locals.csrfToken%>">Add to Cart</button>
+        </div>
+    </div>
+    <p class="card-text" id="product-description"><%=product.category%></p>
+    <p class="card-text" id="product-description"><%=product.description%></p>
 </main>
 
 <%- include('../sharedViews/footer') %>

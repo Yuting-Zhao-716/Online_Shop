@@ -7,14 +7,17 @@
 <%- include('../sharedViews/header') %>
 <main>
     <h1>All Products</h1>
-    <ul id="products-grid">
+
+    <div class="container">
+        <div class="row g-3">
         <% for (const product of products){%>
-            <li>
+
                 <%- include('product-item',{product:product})%>
-            </li>
+
 
         <%}%>
-    </ul>
+        </div>
+    </div>
 
 </main>
 

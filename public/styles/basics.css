@@ -4,10 +4,40 @@
     border:0;
     padding:0;
 }
-html{
-
-}
 body {
     max-width: 90%;
     margin: 1rem auto;
+}
+main{
+     margin-top: 2rem;
+     background-color: rgba(248,249,250,1);
+}
+main h1{
+      padding-top: 2rem;
+      margin-bottom: 2rem;
+  }
+nav{
+    font-size: x-large;
+}
+.nav-link{
+    margin:0.5rem 2rem;
+}
+nav .badge{
+    color: cornflowerblue;
+    border: 1px solid cornflowerblue;
+    border-radius: 20px;
+    margin-left: 0.5rem;
+}
+
+.card-imgs {
+    max-width: 80vw;
+    height:50vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+.card-imgs img{
+    width:20rem;
+    height:15rem;
 }

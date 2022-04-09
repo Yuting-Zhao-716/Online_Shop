@@ -1,18 +1,22 @@
-<article class="product-item">
-   <%for (let i=0;i<product.image.length;i++){%>
-    <img src="/products/assets/images/<%=product.image[i].filename%>" alt="<%=product.title%>">
-    <%}%>
-    <div class="product-item-content">
-        <h2><%=product.title%></h2>
+<div class="col-12 col-md-6 col-lg-3">
+    <article class="product-item card text-center">
+        <img class="card-img-top" src="/products/assets/images/<%= product.image[0].filename %>"
+             alt="<%= product.title %>">
 
-        <div class="product-item-actions">
-            <% if (locals.isAdmin){%>
-            <a href="/update-product/<%=product._id%>" class="btn btn-primary">View & Edit</a>
-            <button class="btn btn-primary" data-productid="<%=product._id%>" data-csrf="<%=locals.csrfToken%>">Delete</button>
-            <%}else{%>
-            <a class="btn btn-primary" href="/products/<%=product._id%>">View Details</a>
-            <%}%>
+        <div class="product-item-content card-body">
+            <h2 class="card-title"><%= product.title %></h2>
+
+            <div class="product-item-actions">
+                <% if (locals.isAdmin){ %>
+                <a href="/update-product/<%= product._id %>" class="btn btn-primary">View & Edit</a>
+                <button class="btn btn-primary" data-productid="<%= product._id %>" data-csrf="<%= locals.csrfToken %>">
+                    Delete
+                </button>
+                <% }else{ %>
+                <a class="btn btn-primary" href="/products/<%= product._id %>">View Details</a>
+                <% } %>
+            </div>
+
         </div>
-
-    </div>
-</article>
+    </article>
+</div>

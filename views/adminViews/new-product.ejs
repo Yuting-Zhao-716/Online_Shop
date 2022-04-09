@@ -1,5 +1,5 @@
 <%- include('../sharedViews/head',{pageTitle:'New Product'}) %>
-<link href="/styles/form.css" rel="stylesheet">
+
 <script src="/scripts/image-preview.js" defer></script>
 <script src="/scripts/change-model-generation.js" defer></script>
 
@@ -8,7 +8,7 @@
 <%- include('../sharedViews/header') %>
 <main>
     <section class="form">
-        <h1>Add New Product</h1>
+        <h1 class="text-center">Add New Product</h1>
         <form action="/product-management/new?_csrf=<%= locals.csrfToken %>" method="post" enctype="multipart/form-data">
             <p class="mb-3">
                 <label class="form-label" for="title">Title</label>

@@ -1,3 +1,10 @@
-<article class="product-item">
-    <a href='/products/<%=generation%>/parts'> <img src="/products/assets/generation/<%=generation%>.png" alt="<%=generation%>"></a>
-</article>
+
+<div class="col-12 col-md-6 col-lg-3">
+    <div class="card text-center ">
+        <img src="/products/assets/generation/<%=generation%>.png" class="card-img-top" alt="<%=generation%>">
+        <div class="card-body">
+            <h5 class="card-title"><%= generation.toUpperCase() %></h5>
+            <a href="/products/<%=generation%>/parts" class="btn btn-primary">Shop</a>
+        </div>
+    </div>
+</div>

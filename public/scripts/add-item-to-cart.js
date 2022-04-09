@@ -1,5 +1,5 @@
 const addCartButtonElement = document.querySelector('#product-details button');
-const badgeElement = document.querySelector('.nav-items .badge');
+const badgeElement = document.querySelector('span.badge');
 
 async function addToCart() {
     const productId = addCartButtonElement.dataset.productid;

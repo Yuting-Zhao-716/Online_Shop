@@ -1,7 +1,5 @@
 <%- include('../sharedViews/head',{pageTitle:'Your Cart'}) %>
 
-<link href="/styles/cart.css" rel="stylesheet"/>
-<link href="/styles/form.css" rel="stylesheet"/>
 <script src="/scripts/update-cart.js" defer></script>
 
 </head>
@@ -9,13 +7,15 @@
 <%- include('../sharedViews/header') %>
 <main>
     <h1>Your cart</h1>
-    <ul id="cart-items">
+    <div id="cart-items" class="container">
+        <div class="row g-3">
         <% for (const item of locals.cart.items){ %>
-        <li>
+
             <%- include('cart-item.ejs',{item:item})%>
-        </li>
+
        <%}%>
-    </ul>
+        </div>
+    </div>
     <div id="cart-total">
         <p>Total:$ <span id="cart-total-price"><%=locals.cart.totalPrice.toFixed(2)%></span></p>
         <section class="form">

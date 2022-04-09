@@ -1,3 +1,10 @@
-<article class="product-item">
-    <a href='/products/<%=product._id%>'> <img src="/products/assets/images/<%=product.image[0].filename%>" alt="<%=product.title%>"></a>
-</article>
+<div class="col-12 col-md-6 col-lg-3">
+    <div class="card text-center ">
+        <img src="/products/assets/images/<%= product.image[0].filename %>" class="card-img-top"
+             alt="<%= product.title %>">
+        <div class="card-body">
+            <h5 class="card-title"><%= product.title.toUpperCase() %></h5>
+            <a href="/products/<%= product._id %>" class="btn btn-primary">Shop</a>
+        </div>
+    </div>
+</div>

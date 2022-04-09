@@ -1,27 +1,28 @@
 
 <%-include('../sharedViews/head',{pageTitle:'Product Management'})%>
-<link href="./styles/products.css" rel="stylesheet">
+
 <script src="/scripts/product-deletion.js" defer></script>
 
 </head>
 <body>
 <%- include('../sharedViews/header')%>
 <main>
-    <h1>Product Administration</h1>
+    <h1 class="text-center">Product Administration</h1>
     <section>
-        <h2>Manage products</h2>
-        <p>
+        <p style="padding-left: 1rem">
             <a href="/product-management/new" class="btn btn-primary">Add Product</a>
         </p>
     </section>
     <section>
-        <ul id="products-grid">
+        <div class="container">
+            <div class="row g-3">
             <% for (const product of productList){%>
-                <li>
+
                 <%-include('./product-item',{product:product})%>
-                </li>
+
             <% } %>
-        </ul>
+            </div>
+        </div>
     </section>
 </main>
 

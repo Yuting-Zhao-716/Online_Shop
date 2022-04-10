@@ -1,4 +1,4 @@
-const addCartButtonElement = document.querySelector('#product-details button');
+const addCartButtonElement = document.querySelector('#product-info button');
 const badgeElement = document.querySelector('span.badge');
 
 async function addToCart() {

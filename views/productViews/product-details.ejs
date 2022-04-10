@@ -1,6 +1,6 @@
 <%- include('../sharedViews/head',{pageTitle:'Product Details'}) %>
 
-
+<link href="/styles/products.css" rel="stylesheet">
 <script src="/scripts/add-item-to-cart.js" type="text/javascript" defer></script>
 
 
@@ -9,21 +9,52 @@
 <%- include('../sharedViews/header') %>
 <main id="product-details">
     <div class="card text-center">
-        <div class="card-imgs">
-            <%for (let i=0;i<product.image.length;i++){%>
-            <img class="card-img-top" src="/products/assets/images/<%=product.image[i].filename%>" alt="<%=product.title%>">
-            <%}%>
+
+
+        <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <%for (let i=0;i<product.image.length;i++){%>
+                    <% if(i==0){%>
+                        <div class="carousel-item active">
+                            <img src="/products/assets/images/<%=product.image[0].filename%>" class="d-block w-100" alt="<%=product.title%>">
+                        </div>
+                    <%}else{%>
+                        <div class="carousel-item">
+                            <img src="/products/assets/images/<%=product.image[i].filename%>" class="d-block w-100" alt="<%=product.title%>">
+                        </div>
+                    <%}%>
+                <%}%>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
         </div>
 
 
-        <div id="product-info" class="card-body">
+
+
+
+        <div id="product-info" class="card-body text-center">
             <h1 class="card-title"><%=product.title%></h1>
-            <p class="card-text">Price: <%=product.price%></p>
-            <button class="btn btn-primary" data-productid="<%=product._id%>" data-csrf="<%=locals.csrfToken%>">Add to Cart</button>
+            <div id="re-arrange">
+                <p class="card-text">Price: <%=product.price%></p>
+                <p class="card-text">Material: <%=product.material%></p>
+                <p class="card-text">Stock: <%=product.stock%></p>
+                <p class="card-text">Brand: <%=product.brand%></p>
+                <p class="card-text">Model: <%=product.model%></p>
+                <p class="card-text">Generation: <%=product.generation%></p>
+            </div>
+            <p class="card-text" id="product-description"><%=product.description%></p>
+            <button class="btn btn-primary" data-productid="<%=product._id%>" data-csrf="<%=locals.csrfToken%>">Add to Query</button>
         </div>
+
     </div>
-    <p class="card-text" id="product-description"><%=product.category%></p>
-    <p class="card-text" id="product-description"><%=product.description%></p>
+
 </main>
 
 <%- include('../sharedViews/footer') %>

@@ -54,6 +54,9 @@
     justify-content: space-between;
     align-items: center;
 }
+ol, ul {
+    padding-left: 0rem !important;
+}
 
 @media (min-width: 48rem) {
     .order-summary {

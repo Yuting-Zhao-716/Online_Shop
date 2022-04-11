@@ -4,10 +4,12 @@
         <h2 ><%= item.product.title %></h2>
         <p>$ <span class="cart-item-price"><%=item.itemTotalPrice.toFixed(2)%></span> <span class="cart-product-price">($ <%=item.product.price.toFixed(2)%>)</span></p>
     </div>
-
+    <div>
         <form id="cart-form" class="cart-item-management" data-productid="<%=item.product._id%>" data-csrf="<%=locals.csrfToken%>">
             <input type="number" value="<%=item.quantity%>" required>
             <button class="btn btn-primary">Update</button>
         </form>
+    </div>
+
 
 </article>

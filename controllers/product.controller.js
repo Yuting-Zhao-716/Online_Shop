@@ -1,10 +1,15 @@
 const Product = require('../models/product');
-const Category = require('../models/category');
 
-async function getBrandsPage(req,res,next){
+
+function getAllMaterialsPage(req,res){
+    res.render('./productViews/all-materials');
+}
+
+async function getBrandsByMaterialPage(req,res,next){
+    const material=req.params.material;
     try{
-        const brands = await Category.findAllBrands();
-        res.render('./productViews/all-brands',{brands:brands});
+        const brands = await Product.findAllBrandsByMaterial(material);
+        res.render('./productViews/all-brands',{brands:brands,material:material});
     }
     catch (e) {
         next(e);
@@ -13,33 +18,36 @@ async function getBrandsPage(req,res,next){
 
 async function getModelsByBrandPage(req,res,next){
     const brand=req.params.brand;
+    const material=req.params.material;
     let models;
     try{
-        models=await Category.findModelByBrand(brand);
+        models = await Product.findAllModelsByBrandMaterial(brand, material);
     }catch (e) {
         next(e);
         return;
     }
-    res.render('./productViews/all-models',{models:models});
+    res.render('./productViews/all-models',{models:models,material:material});
 
 }
 async function getGenerationsByModelPage(req,res,next){
+    const material=req.params.material;
     const model=req.params.model;
     let generations;
     try{
-        generations=await Category.findGenerationByModel(model);
+        generations = await Product.findAllGenerationsByModelMaterial(model, material);
     }catch (e) {
         next(e);
         return;
     }
-    res.render('./productViews/all-generations',{generations:generations});
+    res.render('./productViews/all-generations',{generations:generations,material});
 
 }
 async function getPartsByGenerationPage(req,res,next){
+    const material=req.params.material;
     const generation=req.params.generation;
     let products;
     try{
-        products=await Product.findAllProductsByGeneration(generation);
+        products = await Product.findAllPartsByGenerationMaterial(generation, material);
     }catch (e) {
         next(e);
         return;
@@ -48,16 +56,7 @@ async function getPartsByGenerationPage(req,res,next){
 
 }
 
-async function getProductByCategoryPage(req,res,next){
-    const category=req.params.category;
-    try{
-        const products = await Product.findAllProductsByCategory(category);
-        res.render('./productViews/products-by-category',{products: products,category:category});
-    }
-    catch (e) {
-        next(e);
-    }
-}
+
 
 async function getProductDetailPage(req,res,next){
     const productId=req.params.id;
@@ -68,14 +67,25 @@ async function getProductDetailPage(req,res,next){
         next(e);
     }
 }
+async function getOthersPage(req,res,next){
+    try{
+        const products=await Product.findOthersProducts();
 
+        res.render('./productViews/all-products',{products:products});
+    }catch (e){
+        next(e);
+    }
+
+}
 
 
 module.exports={
-    getBrandsPage:getBrandsPage,
+
     getProductDetailPage:getProductDetailPage,
-    getProductByCategoryPage:getProductByCategoryPage,
     getModelsByBrandPage:getModelsByBrandPage,
     getGenerationsByModelPage:getGenerationsByModelPage,
     getPartsByGenerationPage:getPartsByGenerationPage,
+    getAllMaterialsPage:getAllMaterialsPage,
+    getBrandsByMaterialPage:getBrandsByMaterialPage,
+    getOthersPage:getOthersPage
 }

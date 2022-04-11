@@ -48,17 +48,6 @@ class Category{
         return allGenerations;
     }
 
-    static async  findAllBrands(){
-        const records= await db.getDb().collection('categories').find().toArray();
-        const allBrands=[];
-        for(const record of records){
-            if(!allBrands.includes(record.brand)){
-                allBrands.push(record.brand);
-            }
-        }
-        return allBrands;
-    }
-
     static  async findAllRecords(){
         const records= await db.getDb().collection('categories').find().toArray();
         return records.map(function (record){

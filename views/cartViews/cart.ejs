@@ -24,7 +24,7 @@
     </div>
 
     <section class="form">
-        <form action="/order" method="post">
+        <form action="/order" method="post" id="contact-form">
             <h2 class="text-center">Contact details</h2>
             <input type="hidden" name="_csrf" value="<%= locals.csrfToken %>">
             <p class="mb-3">
@@ -39,7 +39,10 @@
                 <label class="form-label">Query detail</label>
                 <textarea class="form-control" id="detail" name="detail" required></textarea>
             </p>
-            <button class="btn btn-primary">Send to Query</button>
+            <div class="buttons">
+                <button class="btn btn-primary">Send to Query</button>
+            </div>
+
         </form>
     </section>
 </main>

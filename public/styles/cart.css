@@ -1,13 +1,12 @@
 .cart-item {
-    height: 10rem;
+    height: 8rem;
     display: flex;
     flex-direction: column;
-
-
-    background-color: dodgerblue;
+    max-width: 80%;
+    background-color: rgb(222, 226, 231);
     padding: 1rem;
-    border-radius:2px;
-    margin:1rem 0;
+    border-radius:3px;
+    margin:1rem auto;
 }
 .cart-item h2 {
     font-size: 1rem;
@@ -21,11 +20,13 @@
 }
 
 
+
 .cart-item input {
     font: inherit;
     padding: 0.5rem;
     border-radius: 1px;
     border:none;
+    width: 50%;
 }
 
 .cart-product-price{
@@ -52,19 +53,39 @@
 
     max-width: 100% !important;
     margin:0px auto !important;
+    display: flex;
+    justify-content: space-around;
+}
 
+#contact-form{
+    margin-top: 2rem;
+    width: 80% !important;
+    max-width: 80% !important;
 }
 
 @media (min-width: 48rem) {
     .cart-item{
         flex-direction: row;
         justify-content: space-between;
+        align-items: center;
+        max-width: 60%;
     }
     #cart-total{
+        max-width: 80%;
+        margin: 0 auto;
         flex-direction: row;
-        justify-content: space-between;
+        justify-content: space-around;
     }
     #cart-form {
-        width: 30%;
+       width:100%;
+    }
+    .cart-item-info h2,.cart-item-info p{
+        padding: 0.25rem;
+    }
+
+    #contact-form{
+
+        width: 60% !important;
+
     }
 }

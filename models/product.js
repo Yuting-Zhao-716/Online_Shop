@@ -53,15 +53,52 @@ class Product {
             return new Product(product);
         });
     }
+    static async findOthersProducts(){
+        const productList=await db.getDb().collection('products').find({material:'others'}).toArray();
 
-  /*  static async findAllCategory(){
-        return await db.getDb().collection('categories').find().toArray();
-    }*/
-    static async findAllProductsByGeneration(generation){
-        const productList=await db.getDb().collection('products').find({generation:generation}).toArray();
         return productList.map(function (product){
             return new Product(product);
         });
+    }
+
+    static async findAllBrandsByMaterial(material){
+        const productList=await db.getDb().collection('products').find({material:material}).toArray();
+        const brandList=[];
+        for(const product of productList){
+            if(!brandList.includes(product.brand)){
+                brandList.push(product.brand);
+            }
+        }
+        return brandList;
+    }
+
+    static async findAllModelsByBrandMaterial(brand,material){
+        const productList=await db.getDb().collection('products').find({material:material,brand:brand}).toArray();
+        const modelList=[];
+        for(const product of productList){
+            if(!modelList.includes(product.model)){
+                modelList.push(product.model);
+            }
+        }
+        return modelList;
+    }
+    static async findAllGenerationsByModelMaterial(model,material) {
+        const productList = await db.getDb().collection('products').find({material: material, model: model}).toArray();
+        const generationList = [];
+        for (const product of productList) {
+            if (!generationList.includes(product.generation)) {
+                generationList.push(product.generation);
+            }
+        }
+        return generationList;
+    }
+
+    static async findAllPartsByGenerationMaterial(generation,material){
+        const productList=await db.getDb().collection('products').find({material:material,generation:generation}).toArray();
+        return productList.map(function (product){
+           return new Product(product);
+       });
+
     }
 
     static async findOneProduct(productId){

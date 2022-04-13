@@ -66,9 +66,13 @@ app.use(categoryRoutes);
 app.use(errorHandlingMiddleware);
 
 
-/* Connecting to DB and then listen to port 3000 */
+/* Connecting to DB and then listen to port 3000 or server's PORT*/
+let port=3000;
+if(process.env.PORT){
+    port=process.env.PORT;
+}
 db.connectToDatabase().then(function () {
-    app.listen(3000);
+    app.listen(port);
 }).catch(function (error) {
     console.log('Failed to connect to the database');
     console.log(error);

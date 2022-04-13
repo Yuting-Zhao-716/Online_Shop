@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "This is created for SpeedfactoryNZ company and as my own practice project.",
   "main": "app.js",
+  "engines": {
+    "node": "16.x"
+  },
   "scripts": {
     "start": "nodemon app.js"
   },

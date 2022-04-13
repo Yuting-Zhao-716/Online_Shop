@@ -7,7 +7,7 @@
 <body>
 <%- include('../sharedViews/header') %>
 <main>
-    <section class="form">
+    <section class="form" style="width:60%;margin:0 auto">
         <h1 class="text-center">Add New Product</h1>
         <form action="/product-management/new?_csrf=<%= locals.csrfToken %>" method="post" enctype="multipart/form-data">
             <p class="mb-3">
@@ -72,7 +72,7 @@
                 <textarea class="form-control" id="description" name="description" rows="7" required></textarea>
             </p>
             <section class="buttons">
-                <div>
+                <div style="display: flex; justify-content: space-around">
                     <button type="reset" class="btn btn-primary">Reset</button>
                     <button class="btn btn-primary">Save</button>
                 </div>

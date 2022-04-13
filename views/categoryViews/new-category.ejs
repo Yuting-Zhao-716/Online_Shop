@@ -1,15 +1,15 @@
 <%- include('../sharedViews/head',{pageTitle:'New Product'}) %>
-<link href="/styles/form.css" rel="stylesheet">
+
 
 
 </head>
 <body>
 <%- include('../sharedViews/header') %>
 <main>
-    <section class="form">
+    <section class="form" style="width:60%;margin:0 auto">
 
         <form action="/category-management/new " method="post">
-            <h1>Add New Product</h1>
+            <h1 class="text-center">Add New Product</h1>
             <input type="hidden" name="_csrf" value="<%=locals.csrfToken%>">
             <p class="mb-3">
                 <label for="brand" class="form-label">Brand</label>
@@ -26,7 +26,7 @@
             </p>
 
             <section class="buttons">
-                <div>
+                <div style="display: flex; justify-content: space-around">
                     <button class="btn btn-primary" type="reset" >Reset</button>
                     <button class="btn btn-primary">Save</button>
                 </div>

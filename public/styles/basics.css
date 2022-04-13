@@ -29,6 +29,14 @@ nav .badge{
     margin-left: 0.5rem;
 }
 
+#logoimg{
+    width:50vw;
+    height: 10vh;
+    object-fit: scale-down;
+}
+
+
+
 .card-imgs {
     max-width: 80vw;
     height:50vh;
@@ -47,5 +55,22 @@ ul{
 }
 li{
     list-style: none;
-
+}
+#news{
+    padding:1rem;
+    margin:1rem auto;
+    background-color: rgba(248,249,250,1);
+    border:1px solid rgb(202, 207, 212);
+    border-radius: 3px;
+}
+.image-preview{
+    width:10rem;
+    height:5rem;
+}
+@media (min-width:48rem) {
+    #logoimg{
+        width:20rem;
+        height: 4rem;
+        object-fit: cover;
+    }
 }

@@ -1,46 +1,57 @@
-
-<%-include('../sharedViews/head',{pageTitle:'Speedfactory NZ'})%>
+<%- include('../sharedViews/head',{pageTitle:'Speedfactory NZ'}) %>
 <link href="/styles/carousel.css" rel="stylesheet">
 
 </head>
 <body>
-    <%- include('../sharedViews/header') %>
-    <div id="carouselExampleCaptions" class="carousel slide h-200 w-100" data-bs-ride="carousel">
-        <div class="carousel-indicators">
-            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
-            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
-        </div>
-        <div class="carousel-inner ">
-            <div class="carousel-item active">
-                <img src="/products/assets/website/yellowevo.jpg" class="d-block vh-50 vw-50" alt="...">
-                <div class="carousel-caption d-none d-md-block">
-                    <h5>First slide label</h5>
-                    <p>Some representative placeholder content for the first slide.</p>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <img src="/products/assets/website/redcivic.jpg" class="d-block vh-50 vw-50" alt="...">
-                <div class="carousel-caption d-none d-md-block">
-                    <h5>Second slide label</h5>
-                    <p>Some representative placeholder content for the second slide.</p>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <img src="/products/assets/website/white86.jpg" class="d-block vh-50 vw-50" alt="...">
-                <div class="carousel-caption d-none d-md-block">
-                    <h5>Third slide label</h5>
-                    <p>Some representative placeholder content for the third slide.</p>
-                </div>
-            </div>
-        </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-        </button>
+<%- include('../sharedViews/header') %>
+<div id="carouselExampleCaptions" class="carousel slide h-200 w-100" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
+                aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
+                aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
+                aria-label="Slide 3"></button>
     </div>
-    <%- include('../sharedViews/footer')%>
+    <div class="carousel-inner ">
+        <div class="carousel-item active">
+            <img src="/products/assets/website/yellowevo.jpg" class="d-block vh-50 vw-50" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+                <h5>Speed Factory</h5>
+                <p>For all your racing needs</p>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img src="/products/assets/website/redcivic.jpg" class="d-block vh-50 vw-50" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+                <h5>Contact us through Query or Facebook</h5>
+                <p>Online shopping is currently disabled due to stock limitation. Please contact us first to check the
+                    stock.</p>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img src="/products/assets/website/white86.jpg" class="d-block vh-50 vw-50" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+                <h5>Follow us on Facebook for news and new products</h5>
+                <p>Just click the Facebook icon at the bottom of the page and then like our page.</p>
+            </div>
+        </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</div>
+
+<div id="news">
+    <h2>News</h2>
+    <p>Due to the covid pandemic worldwide, our stock is low and new shipments may take a longer time to arrive in NZ,
+        therefore online shopping is currently disabled because of the stock limitation. Please contact us by submitting
+        a Query or chatting via Facebook massager, for detailed product and stock information about certain products.
+        Thanks for your understanding and we appreciate all your support and patience.</p>
+</div>
+<%- include('../sharedViews/footer') %>
